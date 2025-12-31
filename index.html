@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Love ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #eeeeee, #ffd1e8);
+    font-family: Arial, sans-serif;
+}
+
+/* Phone frame */
+.phone {
+    width: 360px;
+    height: 640px;
+    background: #fff;
+    border-radius: 30px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.2);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+}
+
+/* Watermark */
+.phone::before {
+    content: "❤";
+    position: absolute;
+    font-size: 280px;
+    color: pink;
+    opacity: 0.4;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+/* Left images */
+.images {
+    width: 40%;
+    z-index: 2;
+}
+
+.images img {
+    width: 90%;
+    margin: 10px auto;
+    display: block;
+    border-radius: 15px;
+    animation: moveDown 30s linear forwards;
+}
+
+@keyframes moveDown {
+    from { transform: translateY(-180px); }
+    to   { transform: translateY(220px); }
+}
+
+/* Right text */
+.text {
+    width: 60%;
+    padding: 18px;
+    z-index: 2;
+}
+
+.typing {
+    font-size: 14px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+
+.special {
+    margin-top: 12px;
+    font-size: 22px;
+    font-family: 'Comic Sans MS', cursive;
+    color: #ff4d88;
+    text-align: center;
+}
+
+.heart {
+    text-align: center;
+    font-size: 26px;
+    color: red;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Background Music -->
+<audio autoplay loop>
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<div class="phone">
+
+    <!-- Images -->
+    <div class="images">
+        <img src="pic1.jpg">
+        <img src="pic2.jpg">
+        <img src="pic3.jpg">
+    </div>
+
+    <!-- Text -->
+    <div class="text">
+        <div id="typeText" class="typing"></div>
+        <div id="loveLine" class="typing"></div>
+        <div id="newYear" class="special"></div>
+        <div class="heart">♥︎</div>
+    </div>
+
+</div>
+
+<script>
+const text1 =
+`My Love,
+I'm so happy to have you in my life.
+You're the best thing that ever happened to me.
+You're the most beautiful gift I've ever received from God!
+My life would be simply meaningless without you.
+Thank you for being mine.
+Thank you for loving me truly.`;
+
+const text2 = "I love you so much Jaan.";
+const text3 = "Happy New Year Babeeee";
+
+let i = 0;
+let j = 0;
+let k = 0;
+
+// total 30 sec typing
+const speed1 = 20000 / text1.length;
+
+function typeFirst() {
+    if (i < text1.length) {
+        document.getElementById("typeText").innerHTML += text1.charAt(i);
+        i++;
+        setTimeout(typeFirst, speed1);
+    } else {
+        typeSecond();
+    }
+}
+
+function typeSecond() {
+    if (j < text2.length) {
+        document.getElementById("loveLine").innerHTML += text2.charAt(j);
+        j++;
+        setTimeout(typeSecond, 120);
+    } else {
+        typeThird();
+    }
+}
+
+function typeThird() {
+    if (k < text3.length) {
+        document.getElementById("newYear").innerHTML += text3.charAt(k);
+        k++;
+        setTimeout(typeThird, 120);
+    }
+}
+
+typeFirst();
+</script>
+
+</body>
+</html>
